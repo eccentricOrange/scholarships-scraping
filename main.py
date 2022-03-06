@@ -12,7 +12,7 @@ SCHOLARSHIPS_FILENAME = 'scholarships.json'
 CSV_FILENAME = 'scholarships.csv'
 
 
-def collect_all_scholarships(lists_of_lists: list):
+def collect_all_scholarships(lists_of_lists: list) -> list:
     scholarships = []
 
     for list_of_scholarships in lists_of_lists:
@@ -21,22 +21,22 @@ def collect_all_scholarships(lists_of_lists: list):
     return scholarships
 
 
-def pull_scholarship_page_test():
+def pull_scholarship_page_test() -> None:
     pull_test_page(PARAMETERS['page_link'],
                    PARAMETERS['base_path'], TEST_PAGE_FILENAME)
 
 
-def pull_list_page_test():
+def pull_list_page_test() -> None:
     pull_test_page(PARAMETERS['base_url'].replace(
         '*', '1'), PARAMETERS['base_path'], TEST_PAGE_LIST_FILENAME)
 
 
-def parse_all(html_texts: tuple, parse_one_function: Callable):
+def parse_all(html_texts: tuple, parse_one_function: Callable[[str], dict]) -> list:
     pool = Pool()
     return pool.map(parse_one_function, list(html_texts))
 
 
-def get_list_of_scholarships():
+def get_list_of_scholarships() -> None:
     links_with_scholarships = create_links_list(
         PARAMETERS['base_url'], PARAMETERS['end'], PARAMETERS['start'])
     print("Starting downloads for lists of scholarships...")
@@ -49,7 +49,7 @@ def get_list_of_scholarships():
     store(list_of_all_scholarships, PARAMETERS['base_path'] / LINKS_FILENAME)
 
 
-def get_all_scholarship_pages():
+def get_all_scholarship_pages() -> None:
     links_with_scholarships = create_scholarship_links(
         PARAMETERS, LINKS_FILENAME)
     print("Starting downloads for scholarship pages...")
@@ -63,7 +63,7 @@ def get_all_scholarship_pages():
           PARAMETERS['base_path'] / SCHOLARSHIPS_FILENAME)
 
 
-def convert_to_csv():
+def convert_to_csv() -> None:
     print("Starting converting to csv...")
     with open(PARAMETERS['base_path'] / SCHOLARSHIPS_FILENAME, 'r') as scholarships_file, open(PARAMETERS['base_path'] / CSV_FILENAME, 'w', encoding="utf-8") as csv_file:
         scholarships = load(scholarships_file)
@@ -73,7 +73,7 @@ def convert_to_csv():
     print("Finished converting to csv.\n")
 
 
-def main():
+def main() -> None:
     setup(PARAMETERS)
     # pull_scholarship_page_test()
     # pull_list_page_test()

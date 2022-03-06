@@ -23,7 +23,7 @@ def parse_scholarship(scholarship: Soup) -> tuple:
     return None, None  # return the name and link of the scholarship
 
 
-def scholarships_list_parser(html_text: str) -> list:
+def scholarships_list_parser(html_text: str) -> dict:
     data_of_all_scholarships = []
     soup = Soup(html_text, 'html.parser')
 
@@ -39,7 +39,7 @@ def scholarships_list_parser(html_text: str) -> list:
 
             data_of_all_scholarships.append(data_of_current_scholarship)
 
-    return data_of_all_scholarships
+    return dict(data_of_all_scholarships)
 
 
 def scholarship_page_parser(html_text: str) -> dict:
@@ -49,13 +49,16 @@ def scholarship_page_parser(html_text: str) -> dict:
     return data
 
 
-def test(file_name: str, parser):
+def test(file_name: str, parser) -> None:
     with open(Path('data') / PARAMETERS['provider_name'] / file_name, 'r', encoding='utf-8') as file_object:
         html_text = file_object.read()
 
     print(parser(html_text))
 
 
-if __name__ == '__main__':
+def main():
     test(TEST_PAGE_FILENAME, scholarship_page_parser)
     test(TEST_PAGE_LIST_FILENAME, scholarships_list_parser)
+
+if __name__ == '__main__':
+    main()
