@@ -8,7 +8,7 @@ def get_headers(file: dict):
         for key in scholarship:
             headers.add(key)
 
-    return list(headers)
+    return ['id'] + ['select'] + list(headers)
 
 
 def write_values(json_file: dict, csv_file: TextIOWrapper, headers: list):
