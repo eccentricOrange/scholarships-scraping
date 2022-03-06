@@ -73,10 +73,14 @@ def convert_to_csv():
     print("Finished converting to csv.\n")
 
 
-if __name__ == '__main__':
+def main():
     setup(PARAMETERS)
     # pull_scholarship_page_test()
     # pull_list_page_test()
     # get_list_of_scholarships()
     # get_all_scholarship_pages()
     # convert_to_csv()
+
+
+if __name__ == '__main__':
+    main()
