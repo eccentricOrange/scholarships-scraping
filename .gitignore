@@ -1,0 +1,4 @@
+py-env
+data/*
+!data/template
+__pycache__
