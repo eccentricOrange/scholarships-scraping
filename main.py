@@ -1,7 +1,7 @@
 from json import load
 from pull import pull_test_page, parse_all, run_all_async
 from fileio import create_links_list, set_paths_and_dirs, create_scholarship_links, store
-from data.internationalstudent.parsers import parameters, scholarships_list_parser, scholarship_page_parser, TEST_PAGE_FILENAME, TEST_PAGE_LIST_FILENAME
+from data.template.parsers import parameters, scholarships_list_parser, scholarship_page_parser, TEST_PAGE_FILENAME, TEST_PAGE_LIST_FILENAME
 from csvify import get_headers, write_values
 
 LINKS_FILENAME = 'links.json'
