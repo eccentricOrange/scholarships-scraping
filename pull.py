@@ -23,13 +23,9 @@ async def pull_page(session: aiohttp.ClientSession, url: str, number: int) -> st
         return response_text
 
 
-async def pull_pages(session: aiohttp.ClientSession, urls: list) -> tuple:
-    return await asyncio.gather(*[pull_page(session, url, number) for number, url in enumerate(urls, start=1)])
-
-
 async def manage_all_async(urls: list) -> tuple:
     async with aiohttp.ClientSession() as session:
-        html_texts = await pull_pages(session, urls)
+        html_texts = await asyncio.gather(*[pull_page(session, url, number) for number, url in enumerate(urls, start=1)])
         return html_texts
 
 
