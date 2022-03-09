@@ -10,11 +10,14 @@ However, since each provider/website use their own DOM layout, it is not feasibl
 
 ## Expected website structure and pre-requisites:
 * There are several pages of **lists** on the website. These are numbered and the number can be written inside a URL.
-* Each **scholarship** in the list can provide you a name and a link.
-* Following the link will take you to a **page** with more details about that specific scholarship.
-* All this data must be directly embedded in the HTML (and not downloaded through JavaScript, for instance). This does appear to be the common case, thankfully.
-* You'll need to know how to use the [`BeautifulSoup`](https://www.crummy.com/software/BeautifulSoup/doc/) Python module (in addition to knowing Python scripting, of course).
-* A recent Python 3, and all Python dependencies (listed in [requirements file](./requirements.txt)), must be installed.
+*   Each **scholarship** in the list can provide you a name and a link.
+*   Following the link will take you to a **page** with more details about that specific scholarship.
+*   All this data must be directly embedded in the HTML (and not downloaded through JavaScript, for instance). This does appear to be the common case, thankfully.
+*   You'll need to know how to use the [`BeautifulSoup`](https://www.crummy.com/software/BeautifulSoup/doc/) Python module (in addition to knowing Python scripting, of course).
+*   A recent Python 3, and all Python dependencies (listed in [requirements file](./requirements.txt)), must be installed.
+    ```shell
+    $ python -m pip install -r requirements.txt
+    ```
 
 ## How this program works
 1. Use [`aiohttp`](https://docs.aiohttp.org/) to download the content of each page of lists.
@@ -159,7 +162,7 @@ However, since each provider/website use their own DOM layout, it is not feasibl
 
     The `scholarship` object is an instance of the `BeautifulSoup` class, which means that you can just begin to write the parser.
 
-    Your goal is to extract the name and link to the scholarship in to the two variables `name` and `link`. An example is implemented by default and manu websites will adopt an approach that is loosely compatible with this.
+    Your goal is to extract the name and link to the scholarship in to the two variables `name` and `link`. An example is implemented by default and many websites will adopt an approach that is loosely compatible with this.
 
     In the `main()` function, there are two functions built in that can help you run your code thus far to test.
 
