@@ -29,7 +29,7 @@ def pull_scholarship_page_test() -> None:
 
 def pull_list_page_test() -> None:
     pull_test_page(PARAMETERS['base_url'].replace(
-        '*', '1'), PARAMETERS['base_path'], TEST_PAGE_LIST_FILENAME)
+        '*', str(PARAMETERS['start'])), PARAMETERS['base_path'], TEST_PAGE_LIST_FILENAME)
 
 
 def parse_all(html_texts: tuple, parse_one_function: Callable[[str], dict]) -> list:
@@ -76,8 +76,8 @@ def convert_to_csv() -> None:
 
 def main() -> None:
     setup(PARAMETERS)
-    # pull_scholarship_page_test()
-    # pull_list_page_test()
+    pull_scholarship_page_test()
+    pull_list_page_test()
     get_list_of_scholarships()
     get_all_scholarship_pages()
     convert_to_csv()

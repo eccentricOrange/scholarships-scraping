@@ -19,8 +19,17 @@ def find_scholarships(soup: Soup) -> list:
 
 def parse_scholarship(scholarship: Soup) -> tuple:
     heading = scholarship.find('h2')
+    name = None
+    link = None
 
-    return None, None  # return the name and link of the scholarship
+    if heading:
+        embedded_link = heading.find('a')
+
+        if embedded_link:
+            name = embedded_link.text.strip()
+            link = embedded_link['href']
+
+    return name, link  # return the name and link of the scholarship
 
 
 def scholarships_list_parser(html_text: str) -> dict:
@@ -55,6 +64,7 @@ def test(file_name: str, parser) -> None:
 def main():
     test(TEST_PAGE_FILENAME, scholarship_page_parser)
     test(TEST_PAGE_LIST_FILENAME, scholarships_list_parser)
+
 
 if __name__ == '__main__':
     main()
