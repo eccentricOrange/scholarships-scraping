@@ -14,9 +14,10 @@ However, since each provider/website use their own DOM layout, it is not feasibl
 *   Following the link will take you to a **page** with more details about that specific scholarship.
 *   All this data must be directly embedded in the HTML (and not downloaded through JavaScript, for instance). This does appear to be the common case, thankfully.
 *   You'll need to know how to use the [`BeautifulSoup`](https://www.crummy.com/software/BeautifulSoup/doc/) Python module (in addition to knowing Python scripting, of course).
-*   A recent Python 3, and all Python dependencies (listed in [requirements file](./requirements.txt)), must be installed.
+*   A recent Python 3, and all Python dependencies (listed in [requirements file](./requirements.txt)), must be installed. You can use the `pip` tool to install the dependencies using the following command:
+
     ```shell
-    $ python -m pip install -r requirements.txt
+    python -m pip install -r requirements.txt
     ```
 
 ## How this program works
@@ -124,7 +125,7 @@ However, since each provider/website use their own DOM layout, it is not feasibl
     Run the `main.py` script from the root of the project. This will download the source for two webpages (one for a list, and another for a specific scholarship). You can then use these two to develop the parsers, as in the next few steps.
 
     ```shell
-    $ python main.py
+    python main.py
     ```
 
 1.  Open `data/websitename/parsers.py`. Your first task is to write code to extract a list of all the scholarships on that page.
@@ -183,7 +184,7 @@ However, since each provider/website use their own DOM layout, it is not feasibl
     Then, run this script from the root of the project.
 
     ```shell
-    $ python data/websitename/parsers.py
+    python data/websitename/parsers.py
     ```
 
 1.  Open `data/websitename/parsers.py`. Your third (and final for this file) task is to write code to extract the various properties of a particular scholarship from its webpage.
@@ -236,7 +237,7 @@ However, since each provider/website use their own DOM layout, it is not feasibl
     Then, run this script from the root of the project.
 
     ```shell
-    $ python data/websitename/parsers.py
+    python data/websitename/parsers.py
     ```
 
 ### Running the program
@@ -263,7 +264,7 @@ def main() -> None:
 Run the `main.py` script from the root of the project.
 
 ```shell
-$ python main.py
+python main.py
 ```
 
 At this point, if all goes well, you should see some status updates in your terminal, and finally you should be left with the file `data/website_name/scholarships.csv`. You can then import this into a spreadsheet editor. Here are some support links for the most common editors:
