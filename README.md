@@ -1,9 +1,9 @@
 # Scholarships scraper
 
 This project helps you get through giant lists of scholarships. In particular, this project handles the following for you:
-* Downloading the HTML source of multiple webpages.
-* Handling all the files and intermediate conversions.
-* Providing a framework to handle the different types of webpages.
+*   Downloading the HTML source of multiple webpages.
+*   Handling all the files and intermediate conversions.
+*   Providing a framework to handle the different types of webpages.
 
 However, since each provider/website use their own DOM layout, it is not feasible to provide a standardised interface for all of them. So it is up to you to write code to actually parse the website (and, yes, this is kind of complex).
 
@@ -21,11 +21,11 @@ However, since each provider/website use their own DOM layout, it is not feasibl
     ```
 
 ## How this program works
-1. Use [`aiohttp`](https://docs.aiohttp.org/) to download the content of each page of lists.
-1. Pull out all the names and links from each page, and store all of it to one JSON file.
-1. Read the JSON file and use `aiohttp` again to download the page for each scholarship.
-1. Extract the details and store these to another JSON file.
-1. Convert the second JSON to CSV, which can then be imported to a spreadsheet software (or wherever).
+1.  Use [`aiohttp`](https://docs.aiohttp.org/) to download the content of each page of lists.
+1.  Pull out all the names and links from each page, and store all of it to one JSON file.
+1.  Read the JSON file and use `aiohttp` again to download the page for each scholarship.
+1.  Extract the details and store these to another JSON file.
+1.  Convert the second JSON to CSV, which can then be imported to a spreadsheet software (or wherever).
 
 ## Understanding the file structure
 | File | Description/purpose | Would you need to edit this? |
