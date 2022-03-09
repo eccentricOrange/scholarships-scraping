@@ -24,22 +24,18 @@ def parse_scholarship(scholarship: Soup) -> tuple:
 
 
 def scholarships_list_parser(html_text: str) -> dict:
-    data_of_all_scholarships = []
+    data_of_all_scholarships = {}
     soup = Soup(html_text, 'html.parser')
 
     scholarships = find_scholarships(soup)
 
     for scholarship in scholarships:
         name, link = parse_scholarship(scholarship)
-        data_of_current_scholarship = {}
 
         if name and link:
-            data_of_current_scholarship['name'] = name
-            data_of_current_scholarship['link'] = link
+            data_of_all_scholarships[name] = link
 
-            data_of_all_scholarships.append(data_of_current_scholarship)
-
-    return dict(data_of_all_scholarships)
+    return data_of_all_scholarships
 
 
 def scholarship_page_parser(html_text: str) -> dict:

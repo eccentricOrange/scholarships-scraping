@@ -16,7 +16,8 @@ def collect_all_scholarships(lists_of_lists: list) -> list:
     scholarships = []
 
     for list_of_scholarships in lists_of_lists:
-        scholarships.extend(list_of_scholarships)
+        for scholarship, link in list_of_scholarships.items():
+            scholarships.append({'name': scholarship, 'link': link})
 
     return scholarships
 
@@ -41,11 +42,11 @@ def get_list_of_scholarships() -> None:
         PARAMETERS['base_url'], PARAMETERS['end'], PARAMETERS['start'])
     print("Starting downloads for lists of scholarships...")
     htmls_of_scholarships = run_all_async(links_with_scholarships)
-    print("Finished downloads for lists of scholarships.\n")
+    print(f"Finished downloading {len(htmls_of_scholarships)} pages.\n")
     print("Starting parsing of lists of scholarships...")
     list_of_all_scholarships = collect_all_scholarships(
         parse_all(htmls_of_scholarships, scholarships_list_parser))
-    print("Finished parsing of lists of scholarships.\n")
+    print(f"Found {len(list_of_all_scholarships)} scholarships.\n")
     store(list_of_all_scholarships, PARAMETERS['base_path'] / LINKS_FILENAME)
 
 
@@ -54,11 +55,11 @@ def get_all_scholarship_pages() -> None:
         PARAMETERS, LINKS_FILENAME)
     print("Starting downloads for scholarship pages...")
     htmls_of_scholarships = run_all_async(links_with_scholarships)
-    print("Finished downloads for scholarship pages.\n")
+    print(f"Finished downloading {len(htmls_of_scholarships)} pages.\n")
     print("Starting parsing of scholarship pages...")
     list_of_all_scholarships = parse_all(
         htmls_of_scholarships, scholarship_page_parser)
-    print("Finished parsing of scholarship pages.\n")
+    print(f"Finished parsing {len(list_of_all_scholarships)} pages.\n")
     store(list_of_all_scholarships,
           PARAMETERS['base_path'] / SCHOLARSHIPS_FILENAME)
 
@@ -77,9 +78,9 @@ def main() -> None:
     setup(PARAMETERS)
     # pull_scholarship_page_test()
     # pull_list_page_test()
-    # get_list_of_scholarships()
-    # get_all_scholarship_pages()
-    # convert_to_csv()
+    get_list_of_scholarships()
+    get_all_scholarship_pages()
+    convert_to_csv()
 
 
 if __name__ == '__main__':
