@@ -2,3 +2,4 @@ py-env
 data/*
 !data/template
 __pycache__
+exp

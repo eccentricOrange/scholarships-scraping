@@ -1,8 +1,8 @@
-from asyncio import gather, get_event_loop
+from asyncio import gather, get_event_loop, TimeoutError
 from pathlib import Path
 from urllib import request
 
-from aiohttp import ClientSession
+from aiohttp import ClientSession, TCPConnector
 
 
 def pull_test_page(url: str, base_dir_path: Path, file_name: str) -> None:
@@ -17,13 +17,17 @@ def pull_test_page(url: str, base_dir_path: Path, file_name: str) -> None:
 
 
 async def pull_page(session: ClientSession, url: str) -> str:
-    async with session.get(url) as response:
-        response_text = await response.text()
-        return response_text
+    try:
+        async with session.get(url) as response:
+            response_text = await response.text()
+            return response_text
+
+    except TimeoutError:
+        return ""
 
 
 async def manage_all_async(urls: list) -> tuple:
-    async with ClientSession() as session:
+    async with ClientSession(connector=TCPConnector(force_close=True)) as session:
         html_texts = await gather(*[pull_page(session, url) for url in urls])
         return html_texts
 
