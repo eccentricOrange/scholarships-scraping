@@ -1,8 +1,8 @@
-import asyncio
+from asyncio import gather, get_event_loop
 from pathlib import Path
 from urllib import request
 
-import aiohttp
+from aiohttp import ClientSession
 
 
 def pull_test_page(url: str, base_dir_path: Path, file_name: str) -> None:
@@ -16,17 +16,17 @@ def pull_test_page(url: str, base_dir_path: Path, file_name: str) -> None:
         test_list_file.write(html_text.decode('utf-8'))
 
 
-async def pull_page(session: aiohttp.ClientSession, url: str) -> str:
+async def pull_page(session: ClientSession, url: str) -> str:
     async with session.get(url) as response:
         response_text = await response.text()
         return response_text
 
 
 async def manage_all_async(urls: list) -> tuple:
-    async with aiohttp.ClientSession() as session:
-        html_texts = await asyncio.gather(*[pull_page(session, url) for url in urls])
+    async with ClientSession() as session:
+        html_texts = await gather(*[pull_page(session, url) for url in urls])
         return html_texts
 
 
 def run_all_async(urls: list) -> tuple:
-    return asyncio.get_event_loop().run_until_complete(manage_all_async(urls))
+    return get_event_loop().run_until_complete(manage_all_async(urls))

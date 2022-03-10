@@ -1,5 +1,6 @@
 from pathlib import Path
-from bs4 import BeautifulSoup as Soup
+from typing import Callable
+from bs4 import BeautifulSoup
 
 TEST_PAGE_FILENAME = "test_page.html"
 TEST_PAGE_LIST_FILENAME = "test_page_list.html"
@@ -13,11 +14,11 @@ PARAMETERS = {
 }
 
 
-def find_scholarships(soup: Soup) -> list:
+def find_scholarships(soup: BeautifulSoup) -> list:
     return soup.find_all('div', {'class', 'post clearfix'})
 
 
-def parse_scholarship(scholarship: Soup) -> tuple:
+def parse_scholarship(scholarship: BeautifulSoup) -> tuple:
     heading = scholarship.find('h2')
     name = None
     link = None
@@ -34,7 +35,7 @@ def parse_scholarship(scholarship: Soup) -> tuple:
 
 def scholarships_list_parser(html_text: str) -> dict:
     data_of_all_scholarships = {}
-    soup = Soup(html_text, 'html.parser')
+    soup = BeautifulSoup(html_text, 'html.parser')
 
     scholarships = find_scholarships(soup)
 
@@ -49,12 +50,12 @@ def scholarships_list_parser(html_text: str) -> dict:
 
 def scholarship_page_parser(html_text: str) -> dict:
     data = {}
-    soup = Soup(html_text, 'html.parser')
+    soup = BeautifulSoup(html_text, 'html.parser')
 
     return data
 
 
-def test(file_name: str, parser) -> None:
+def test(file_name: str, parser: Callable) -> None:
     with open(Path('data') / PARAMETERS['provider_name'] / file_name, 'r', encoding='utf-8') as file_object:
         html_text = file_object.read()
 

@@ -132,7 +132,7 @@ However, since each provider/website use their own DOM layout, it is not feasibl
     To begin, find the `find_scholarships()` function:
 
     ```python
-    def find_scholarships(soup: Soup) -> list:
+    def find_scholarships(soup: BeautifulSoup) -> list:
         return soup.find_all('div', {'class', 'post clearfix'})
     ```
 
@@ -145,7 +145,7 @@ However, since each provider/website use their own DOM layout, it is not feasibl
     To begin, find the `parse_scholarship()` function:
 
     ```python
-    def parse_scholarship(scholarship: Soup) -> tuple:
+    def parse_scholarship(scholarship: BeautifulSoup) -> tuple:
         heading = scholarship.find('h2')
         name = None
         link = None
@@ -193,7 +193,7 @@ However, since each provider/website use their own DOM layout, it is not feasibl
     ```python
     def scholarship_page_parser(html_text: str) -> dict:
         data = {}
-        soup = Soup(html_text, 'html.parser')
+        soup = BeautifulSoup(html_text, 'html.parser')
 
         return data
     ```

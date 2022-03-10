@@ -12,7 +12,7 @@ def create_scholarship_links(parameters: dict, links_filename) -> list:
 
 
 def setup(parameters: dict) -> None:
-    base_dir_path = Path("data") / parameters['provider_name']
+    base_dir_path = Path("data") / str(parameters['provider_name'])
     base_dir_path.mkdir(parents=True, exist_ok=True)
     parameters['base_path'] = base_dir_path
 
