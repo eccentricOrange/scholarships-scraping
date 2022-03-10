@@ -9,7 +9,7 @@ However, since each provider/website use their own DOM layout, it is not feasibl
 
 
 ## Expected website structure and pre-requisites:
-* There are several pages of **lists** on the website. These are numbered and the number can be written inside a URL.
+*   There are several pages of **lists** on the website. These are numbered and the number can be written inside a URL.
 *   Each **scholarship** in the list can provide you a name and a link.
 *   Following the link will take you to a **page** with more details about that specific scholarship.
 *   All this data must be directly embedded in the HTML (and not downloaded through JavaScript, for instance). This does appear to be the common case, thankfully.
@@ -32,16 +32,16 @@ However, since each provider/website use their own DOM layout, it is not feasibl
 | -- | -- | -- |
 | `main.py` | Organise everything and help you run the program. | Yes |
 | `modules/pull.py` | Handle any communication with the internet. | No |
-| `modules/fileio.py` | Handle the storage and retrieval of files. (mostly). | No |
+| `modules/fileio.py` | Handle the storage and retrieval of files (mostly). | No |
 | `data/` | Holds subfolders, each for one specific website. | Yes |
-| `data/templates/` | Template for dealing with one website. Duplicate this and rename it to begin (`website_name` is used here as an example). | No |
-| `data/website_name/` | Hold all parsers and data about one particular website. | Yes |
-| `data/website_name/parsers.py` | Define the parsers and other data for one particular website. | Yes |
-| `data/website_name/links.json` | Hold all the links and names pulled from one website. | No |
-| `data/website_name/scholarships.json` | Hold all the data about each scholarship pulled form one website. | No |
-| `data/website_name/scholarships.csv` | Hold all the data about each scholarship pulled form one website. **Final product.** | No |
-| `data/website_name/test_page.html` | Source code for any one scholarship for you to experiment on. | No |
-| `data/website_name/test_page_list.html` | Source code for any one page of the lists scholarship for you to experiment on. | No |
+| `data/templates/` | Template for dealing with one website. Duplicate this and rename it to begin (`websitename` is used here as an example). | No |
+| `data/websitename/` | Hold all parsers and data about one particular website. | Yes |
+| `data/websitename/parsers.py` | Define the parsers and other data for one particular website. | Yes |
+| `data/websitename/links.json` | Hold all the links and names pulled from one website. | No |
+| `data/websitename/scholarships.json` | Hold all the data about each scholarship pulled form one website. | No |
+| `data/websitename/scholarships.csv` | Hold all the data about each scholarship pulled form one website. **Final product.** | No |
+| `data/websitename/test_page.html` | Source code for any one scholarship for you to experiment on. | No |
+| `data/websitename/test_page_list.html` | Source code for any one page of the lists scholarship for you to experiment on. | No |
 
 ## Usage
 
@@ -266,7 +266,7 @@ Run the `main.py` script from the root of the project.
 python main.py
 ```
 
-At this point, if all goes well, you should see some status updates in your terminal, and finally you should be left with the file `data/website_name/scholarships.csv`. You can then import this into a spreadsheet editor. Here are some support links for the most common editors:
+At this point, if all goes well, you should see some status updates in your terminal, and finally you should be left with the file `data/websitename/scholarships.csv`. You can then import this into a spreadsheet editor. Here are some support links for the most common editors:
 
 * Microsoft Excel: https://support.microsoft.com/office/import-or-export-text-txt-or-csv-files-5250ac4c-663c-47ce-937b-339e391393ba
 * Apple Numbers: https://support.apple.com/guide/numbers/tan9f3c54bdc/mac
