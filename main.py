@@ -2,9 +2,8 @@ from json import load
 from multiprocessing import Pool
 from typing import Callable
 
-from csvify import get_headers, write_values
 from data.template.parsers import TEST_PAGE_FILENAME, TEST_PAGE_LIST_FILENAME, PARAMETERS, scholarship_page_parser, scholarships_list_parser
-from fileio import create_links_list, create_scholarship_links, setup, store
+from fileio import create_links_list, create_scholarship_links, setup, store, get_headers, write_values
 from pull import pull_test_page, run_all_async
 
 LINKS_FILENAME = 'links.json'

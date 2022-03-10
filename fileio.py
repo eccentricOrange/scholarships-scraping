@@ -1,3 +1,5 @@
+from csv import DictWriter
+from io import TextIOWrapper
 from json import dump, load
 from pathlib import Path
 
@@ -22,3 +24,19 @@ def create_links_list(base_url: str, end: int, start=1) -> list:
 def store(data: list, file_path: Path) -> None:
     with open(file_path, 'w') as file_object:
         dump(data, file_object, indent=4)
+
+
+def get_headers(file: dict) -> list:
+    headers = set()
+
+    for scholarship in file:
+        for key in scholarship:
+            headers.add(key)
+
+    return ['id'] + ['select'] + list(headers)
+
+
+def write_values(json_file: dict, csv_file: TextIOWrapper, headers: list) -> None:
+    writer = DictWriter(csv_file, fieldnames=headers)
+    writer.writeheader()
+    writer.writerows(json_file)

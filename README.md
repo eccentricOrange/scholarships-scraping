@@ -32,7 +32,6 @@ However, since each provider/website use their own DOM layout, it is not feasibl
 | -- | -- | -- |
 | `pull.py` | Handle any communication with the internet. | No |
 | `fileio.py` | Handle the storage and retrieval of files. (mostly). | No
-| `csvify.py` | Handle the JSON to CSV conversion. | No |
 | `main.py` | Organise everything and help you run the program. | Yes |
 | `data/` | Holds subfolders, each for one specific website. | Yes |
 | `data/templates/` | Template for dealing with one website. Duplicate this and rename it to begin (`website_name` is used here as an example). | No |
