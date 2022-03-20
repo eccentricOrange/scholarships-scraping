@@ -92,6 +92,7 @@ def convert_to_csv() -> None:
 
 def main() -> None:
     setup(PARAMETERS)
+    print(f"Working with {PARAMETERS['provider_name']}\n")
     pull_scholarship_page_test()
     pull_list_page_test()
     get_list_of_scholarships()
