@@ -260,6 +260,7 @@ def main() -> None:
 ```
 
 **Note:** This project uses the built-in [`multiprocesssing`](https://docs.python.org/library/multiprocessing.html) module to concurrently run parsers. As a result, using Ctrl+C or Cmd+C may not abort the script, and you may have to kill the terminal.
+
 Run the `main.py` script from the root of the project.
 
 ```shell
