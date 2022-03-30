@@ -43,21 +43,27 @@ def parse_all(html_texts: tuple, parse_one_function: Callable[[str], dict]) -> l
     pool = Pool()
     return pool.map(parse_one_function, list(html_texts))
 
-
+# pull lists of scholarships
 def get_list_of_scholarships() -> None:
+
+    # generate a list of links to all pages of scholarships
+    # using the number/ID of the first and last pages
     links_with_scholarships = create_links_list(
         PARAMETERS['base_url'], PARAMETERS['end'], PARAMETERS['start'])
     print(f"{len(links_with_scholarships)} pages of scholarship lists to be downloaded.\n")
         
+    # download all pages lists of of scholarships
     print("Starting downloads for lists of scholarships...")
     htmls_of_scholarships = run_all_async(links_with_scholarships)
     print(f"Finished downloading {len(htmls_of_scholarships)} pages.\n")
 
+    # parse all pages lists of of scholarships
     print("Starting parsing of lists of scholarships...")
     list_of_all_scholarships = collect_all_scholarships(
         parse_all(htmls_of_scholarships, scholarships_list_parser))
     print(f"Found {len(list_of_all_scholarships)} scholarships.\n")
 
+    # store the list of all scholarships
     store(list_of_all_scholarships, PARAMETERS['base_path'] / LINKS_FILENAME)
 
 
