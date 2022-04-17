@@ -20,8 +20,8 @@ def find_scholarships(soup: BeautifulSoup) -> list:
 
 def parse_scholarship(scholarship: BeautifulSoup) -> tuple:
     heading = scholarship.find('h2')
-    name = None
-    link = None
+    name: str | None = None
+    link: str | None = None
 
     if heading:
         embedded_link = heading.find('a')
