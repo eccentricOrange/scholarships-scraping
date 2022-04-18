@@ -3,3 +3,5 @@ data/*
 !data/template
 __pycache__
 exp
+.python-version
+*.ipynb

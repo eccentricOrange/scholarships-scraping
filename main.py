@@ -26,7 +26,7 @@ def collect_all_scholarships(lists_of_lists: list) -> list:
 
 
 def pull_scholarship_page_test() -> None:
-    print("Starting download of schoalrship test page...")
+    print("Starting download of scholarship test page...")
     pull_test_page(PARAMETERS['page_link'],
                    PARAMETERS['base_path'], TEST_PAGE_FILENAME)
     print("Finished download of scholarship test page.\n")
