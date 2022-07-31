@@ -1,3 +1,8 @@
+## Deprecation notice
+I used this project to scrape scholarship data for financing my undergraduate studies. I think I've found the ones that are meet both my eligibility criteria and my financial needs, and this project will hence not be maintained.
+
+___
+
 # Scholarships scraper
 
 This project helps you get through giant lists of scholarships. In particular, this project handles the following for you:
